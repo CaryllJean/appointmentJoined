@@ -55,7 +55,6 @@ if (isset($_POST['edit'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,37 +64,65 @@ if (isset($_POST['edit'])) {
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
             max-width: 600px;
             margin: 50px auto;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
         }
 
         label {
             display: block;
-            margin-top: 10px;
+            margin-bottom: 8px;
+            color: #555;
         }
 
         select, input {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-top: 5px;
             margin-bottom: 10px;
             box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #4CAF50;
         }
 
         .buttons {
-            margin-top: 15px;
+            text-align: center;
+            margin-top: 20px;
         }
 
         button {
-            padding: 10px;
-            margin-right: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -105,10 +132,10 @@ if (isset($_POST['edit'])) {
     <h2>Edit Appointment</h2>
 
     <!-- Edit Appointment Form -->
-    <form action="appointmentform.php" method="post">
+    <form action="" method="post">
         <input type="hidden" name="edit_appt_id" value="<?php echo $appointment['appt_id']; ?>">
 
-        <label for="patient_id">Patient Name:</label>
+        <label for="edit_patient_id">Patient Name:</label>
         <select name="edit_patient_id" id="edit_patient_id" required>
             <?php
             foreach ($patients as $patient) {
@@ -128,7 +155,7 @@ if (isset($_POST['edit'])) {
             ?>
         </select>
 
-        <label for="edit_appt_id">Status:</label>
+        <label for="edit_appt_status">Status:</label>
         <select name="edit_appt_status" id="edit_appt_status" required>
             <option value="Pending" <?php echo ($appointment['appt_status'] == 'Pending') ? 'selected' : ''; ?>>Pending</option>
             <option value="Confirmed" <?php echo ($appointment['appt_status'] == 'Confirmed') ? 'selected' : ''; ?>>Confirmed</option>

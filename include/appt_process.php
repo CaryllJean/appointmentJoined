@@ -31,32 +31,28 @@ if (isset($_POST['add'])) {
 
 // Handle appointment edits
 if (isset($_POST['edit'])) {
-    $editAppointmentId = $_POST['appt_id'];
-    $editPatientId = $_POST['patient_id'];
-    $editScheduleId = $_POST['sched_id'];
-    $editStatus = $_POST['appt_status'];
+    $editAppointmentId = $_POST['edit_appt_id'];
+    $editPatientId = $_POST['edit_patient_id'];
+    $editScheduleId = $_POST['edit_sched_id'];
+    $editStatus = $_POST['edit_appt_status'];
 
-    $stmt = $db->prepare("UPDATE appointment 
-                          SET patient_id = ?, 
-                              sched_id = ?, 
-                              appt_status = ? 
-                          WHERE appt_id = ?");
+    $editQuery = "UPDATE appointment
+                  SET patient_id = '$editPatientId', 
+                      sched_id = '$editScheduleId', 
+                      appt_status = '$editStatus' 
+                  WHERE appt_id = '$editAppointmentId'";
 
-    // Bind parameters to the prepared statement
-    $stmt->bind_param("iiii", $editPatientId, $editScheduleId, $editStatus, $editAppointmentId);
+    $resultEdit = $db->query($editQuery);
 
-    // Execute the statement
-    if ($stmt->execute()) {
-        // Appointment updated successfully
-        // You can redirect or display a success message here
+    if ($resultEdit === TRUE) {
+        // Redirect to appointmentform.php on successful update
+        header("Location: ../appointmentform.php");
+        exit(); // Ensure that subsequent code is not executed
     } else {
-        // Error occurred during update
-        echo "Error updating appointment: " . $stmt->error;
+        echo "Error updating appointment: " . $db->error;
     }
-
-    // Close the statement
-    $stmt->close();
 }
+
 
 
 // Handle appointment deletion
