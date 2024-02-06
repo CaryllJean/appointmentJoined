@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+.body-one {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  background-color: #f4f4f4;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container_register {
+  background-color: #d2b48c;
+  padding: 20px;
+  border-radius: 5px;
+  width: 50%;
+  box-shadow: 0 0 20px rgba(75, 74, 74, 0.1);
+  max-width: 800px;
+}
+h2 {
+  text-align: center;
+  color: #333;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+input[type="text"],
+input[type="email"],
+select {
+  width: 95%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+input[type="time"] {
+  width: 95%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+input[type="date"] {
+  width: 95%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+button {
+  padding: 10px 20px;
+  background-color: #442917;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  display: block;
+  margin: 0 auto;
+}
+button:hover {
+  background-color: #e9cba9;
+}
+
+.tablinks {
+  display: inline-block;
+}
+.tabs {
+  text-align: center;
+}
